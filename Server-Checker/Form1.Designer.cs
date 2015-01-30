@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.ipAddress = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.autoButton = new System.Windows.Forms.CheckBox();
+            this.ipInput = new System.Windows.Forms.TextBox();
+            this.portInput = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.portInput)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -48,38 +48,39 @@
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Log";
             // 
-            // checkBox1
+            // autoButton
             // 
-            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox1.Location = new System.Drawing.Point(144, 45);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(113, 46);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Auto Check";
-            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.autoButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.autoButton.Location = new System.Drawing.Point(144, 45);
+            this.autoButton.Name = "autoButton";
+            this.autoButton.Size = new System.Drawing.Size(113, 46);
+            this.autoButton.TabIndex = 1;
+            this.autoButton.Text = "Auto Check";
+            this.autoButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.autoButton.UseVisualStyleBackColor = true;
+            this.autoButton.CheckedChanged += new System.EventHandler(this.autoButton_CheckedChanged);
             // 
-            // ipAddress
+            // ipInput
             // 
-            this.ipAddress.Location = new System.Drawing.Point(47, 45);
-            this.ipAddress.MaxLength = 15;
-            this.ipAddress.Name = "ipAddress";
-            this.ipAddress.Size = new System.Drawing.Size(91, 20);
-            this.ipAddress.TabIndex = 2;
-            this.ipAddress.Text = "8.31.96.135";
+            this.ipInput.Location = new System.Drawing.Point(47, 45);
+            this.ipInput.MaxLength = 15;
+            this.ipInput.Name = "ipInput";
+            this.ipInput.Size = new System.Drawing.Size(91, 20);
+            this.ipInput.TabIndex = 2;
+            this.ipInput.Text = "8.31.96.135";
             // 
-            // numericUpDown1
+            // portInput
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(47, 71);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.portInput.Location = new System.Drawing.Point(47, 71);
+            this.portInput.Maximum = new decimal(new int[] {
             65535,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(91, 20);
-            this.numericUpDown1.TabIndex = 3;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.portInput.Name = "portInput";
+            this.portInput.Size = new System.Drawing.Size(91, 20);
+            this.portInput.TabIndex = 3;
+            this.portInput.Value = new decimal(new int[] {
             14300,
             0,
             0,
@@ -107,7 +108,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 12);
+            this.label3.Location = new System.Drawing.Point(10, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 27);
             this.label3.TabIndex = 7;
@@ -117,7 +118,8 @@
             // 
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(135, 10);
+            this.statusLabel.ForeColor = System.Drawing.Color.Green;
+            this.statusLabel.Location = new System.Drawing.Point(135, 7);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(101, 32);
             this.statusLabel.TabIndex = 8;
@@ -132,13 +134,15 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.ipAddress);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.portInput);
+            this.Controls.Add(this.ipInput);
+            this.Controls.Add(this.autoButton);
             this.Controls.Add(this.textBox1);
+            this.MaximumSize = new System.Drawing.Size(291, 261);
+            this.MinimumSize = new System.Drawing.Size(291, 261);
             this.Name = "Form1";
             this.Text = "Server Checker";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.portInput)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,9 +151,9 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox ipAddress;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.CheckBox autoButton;
+        private System.Windows.Forms.TextBox ipInput;
+        private System.Windows.Forms.NumericUpDown portInput;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

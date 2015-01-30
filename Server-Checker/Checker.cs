@@ -8,24 +8,33 @@ namespace Server_Checker
     {
         private IPAddress ip;
         private short port;
-        private Socket s;
 
         public Checker(IPAddress ip, short port)
         {
             this.ip = ip;
             this.port = port;
-            s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
-        public void Check()
+        public void setIP(IPAddress ip)
         {
-            try
+            this.ip = ip;
+        }
+
+        public void setPort(short port)
+        {
+            this.port = port;
+        }
+
+        public bool Check()
+        {
+            using (Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
             {
                 IAsyncResult iar = s.BeginConnect(ip, port, null, null);
-            }
-            catch (SocketException)
-            {
-                s.Dispose();
+                iar.AsyncWaitHandle.WaitOne(1000, true);
+
+                if (s.Connected)
+                    return true;
+                return false;
             }
         }
     }
